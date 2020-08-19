@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import "./styles.css";
 import API from "../utils/API.js"
 import DataBody from './components/DataBody';
-import Search from "./components/SearchBox";
+import SearchBox from '../SearchBox';
 
-export default class DataArea extends Component {
+class DataArea extends Component {
     state = {
         users:[{}],
         order: "descend",
@@ -13,13 +13,24 @@ export default class DataArea extends Component {
 
     headings = []
 
-    handleSort = heading => {
-    }
+    /*handleSort = heading => {
+        if(this.state.order === "descend"){
+            const randomUsers = this.state.filteredUsers.sort()
+        }
+    }*/
 
-    handleSearchChange = event => {}
+    handleSearchChange = event => {
+        const userSearch = event.target.value.toLowerCase();
+        const allUsers= this.state.users;
+        const filteredUsers = allUsers.filter(user =>
+            user.name.first.toLowerCase().indexOf(userSearch) > -1);
+        this.setState({
+            filteredUsers: filteredUsers
+        })
+    }
     
     componentDiMount () {
-        ExtensionScriptApis.getUsers().then(results => {
+        API.getUsers(`https://randomuser.me/api/?results=100&nat=us`).then(results => {
             this.setState({
                 users: results.data.results,
                 filteredUsers: results.data.results
@@ -29,16 +40,12 @@ export default class DataArea extends Component {
 
     render() {
         return (
-            <>
-                <Nav handleSearchChange ={this.handleSearchChange} />
-                <div className="data-area">
-                    <DataTable 
-                        headings={this.headings}
-                        users={this.state.filteredUsers}
-                        handleSort={this.handleSort}
-                    />
-                </div>
-            </>
+            <SearchBox
+                handleSearchState = {this.handleSearchChange}
+            />,
+            <DataBody 
+                users = {this.state.filteredUsers}
+            />    
         )
     }
 }

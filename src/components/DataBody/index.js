@@ -1,5 +1,6 @@
-import React from 'react'
+import React from 'react';
 import "./styles.css";
+import DataTable from './components/DataTable';
 
 function DataBody({ users }) {
     function formatDate(date) {

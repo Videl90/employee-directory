@@ -1,6 +1,7 @@
 import React from 'react';
 import Wrapper from './components/Wrapper';
-import Header from './components/Header'
+import Header from './components/Header';
+import DataArea from './components/DataArea'
 import SearchBox from './components/SearchBox';
 import './App.css';
 
@@ -9,6 +10,7 @@ function App() {
     <Wrapper>
       <Header></Header>
       <SearchBox></SearchBox>
+      <DataArea></DataArea>
     </Wrapper>
   );
 }
