@@ -1,7 +1,8 @@
 import React from 'react';
 import Wrapper from './components/Wrapper';
 import Header from './components/Header';
-import DataArea from './components/DataArea'
+import TableTitles from './components/TableTitles';
+import UsersTable from './components/UsersTable';
 import SearchBox from './components/SearchBox';
 import './App.css';
 
@@ -10,7 +11,8 @@ function App() {
     <Wrapper>
       <Header></Header>
       <SearchBox></SearchBox>
-      <DataArea></DataArea>
+      <TableTitles></TableTitles>
+      <UsersTable></UsersTable>
     </Wrapper>
   );
 }
