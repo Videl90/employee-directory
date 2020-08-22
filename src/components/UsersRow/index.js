@@ -9,14 +9,14 @@ function UsersRow (props) {
                     <th scope="col">
                         <img src={props.img} alt={props.name}/>
                     </th>
-                    <th scope="col">{props.name}</th>
-                    <th scope="col">{props.phone}</th>
-                    <th scope="col">{props.email}</th>
-                    <th scope="col">{props.dob}</th>
+                    <th scope="col">Name{props.name}</th>
+                    <th scope="col">Phone{props.phone}</th>
+                    <th scope="col">email{props.email}</th>
+                    <th scope="col">dob{props.dob}</th>
                 </tr>
             </thead>
         </table>
     )
 }
 
-export default UsersRow
+export default UsersRow;
